@@ -1,8 +1,5 @@
-<!--<div>-->
+<div>
 <auth ng-if="!$ctrl.userLoggedIn" auth-status="$ctrl.userLoggedIn"
 ></auth>
-
-<!--test data {{$ctrl.test}}-->
-
-<!--<main-view ng-if="$ctrl.authData"></main-view>-->
-<!--</div>-->
+<home-section ng-if="$ctrl.userLoggedIn" auth-status="$ctrl.userLoggedIn"></home-section>
+</div>

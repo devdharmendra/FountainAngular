@@ -1,13 +1,20 @@
 <section class="col-md-12">
   <div class="wrapper">
-    <form class="form-signin">
+    <form ng-submit='$ctrl.handleLogin()' class="form-signin">
       <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus=""/>
-      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+      <p>user: 123@gmail.com <br/> password: 123</p>
+      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus=""
+             ng-model="$ctrl.user.username"/>
+      <input type="password" class="form-control" name="password" placeholder="Password" required=""
+             ng-model="$ctrl.user.password"/>
       <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" ng-model="$ctrl.user.rememberMe"> Remember me
       </label>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <div ng-if="$ctrl.message" class="alert alert-danger">
+        <span>{{$ctrl.message}}</span>
+      </div>
     </form>
   </div>
 </section>
+
