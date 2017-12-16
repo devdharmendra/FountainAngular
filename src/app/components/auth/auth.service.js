@@ -5,31 +5,28 @@ function AuthService($http) {
 AuthService.prototype = {
   authenticateUser: function (userData, callback) {
     this.$http.get('user.json').then(function (response) {
-      /*eslint-disable*/
-      if(response.status === 200){
+      if (response.status === 200) {
         let actualUser = response.data[0];
-        if(userData.username === actualUser.username && userData.password === actualUser.password){
-          //user authenticated
+        if (userData.username === actualUser.username && userData.password === actualUser.password) {
+          // user authenticated
           callback(null, actualUser);
-        }else{
-          //for unauthenticate user
+        } else {
+          // for unauthenticated user
           callback(null, null);
         }
       }
     }).catch(function (err) {
-      /*eslint-disable*/
-      console.log(err);
-      //for error handling
+      // for error handling
       callback(err, null);
     });
   },
-  setUserData : function (userData) {
+  setUserData: function (userData) {
     this.user = userData;
   },
-  getUserData : function (userData) {
+  getUserData: function () {
     return this.user;
   },
-  logout : function (callback) {
+  logout: function (callback) {
     localStorage.removeItem('userToken');
     callback();
   }
